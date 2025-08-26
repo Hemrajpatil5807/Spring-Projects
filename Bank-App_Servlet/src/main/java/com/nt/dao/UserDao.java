@@ -63,9 +63,12 @@ public class UserDao {
 
 			}
 
-			if (u != null)
+			if (u != null) {
 				return u;
-
+			}else {
+				return null;
+			}
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -99,6 +102,8 @@ public class UserDao {
 
 			if (ulist != null) {
 				return ulist;
+			}else {
+				return null;
 			}
 
 		} catch (Exception e) {
@@ -181,7 +186,9 @@ public class UserDao {
 		   if(u!=null){
 			if(email.equals(u.getEmail()) && password.equals(u.getPin()))
 				return u;
-		   }
+		   }else {
+				return null;
+			}
 		   
 		} catch (Exception e) {
 			e.printStackTrace();
