@@ -18,5 +18,7 @@ public interface UsersDao {
 	boolean updateUser(Users user);
 
 	boolean deleteUser(int id);
+
+	Users getUser(int manager_id);
 	
 }

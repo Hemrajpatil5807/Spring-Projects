@@ -132,8 +132,8 @@ body {
 				<div class="mt-4">
 					<h4>Quick Actions</h4>
 					<div class="d-flex gap-3 flex-wrap">
-						<a href="addsite" class="btn btn-primary"> 
-						   <i class="fa-solid fa-plus"></i> Add Site </a> 
+						<button class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#addSiteModal"> 
+						   <i class="fa-solid fa-plus"></i> Add Site </button> 
 						<a href="${pageContext.request.contextPath}/admin/materials/add" class="btn btn-success"> 
 						     <i class="fa-solid fa-plus"></i> Add Material </a> 
 					   <a href="${pageContext.request.contextPath}/admin/expenses/add" class="btn btn-warning text-white">
@@ -168,10 +168,66 @@ body {
 						</div>
 					</div>
 				</div>
+              <br><br><br>
+               <c:if test="${not empty message}">
+                 <div id="messageBox" style="color: ${messageType == 'error' ? 'red' : 'green'};">
+                    <strong> ${message}</strong> 
+                 </div>
+                <script>
+                      setTimeout(() => {
+                              const box = document.getElementById("messageBox");
+                              if (box) box.style.display = "none";
+                          }, 3000);
+                </script>
+             </c:if>
 
 			</main>
 		</div>
 	</div>
+
+
+
+	<!-- Add Site Modal -->
+<div class="modal fade" id="addSiteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="addsite" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Site</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Site Name</label>
+                        <input type="text" name="site_name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Location</label>
+                        <input type="text" name="location" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Start Date</label>
+                        <input type="date" name="startDate" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">End Date</label>
+                        <input type="date" name="endDate" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="manager_id" class="form-label">Site Manager ID</label>
+                        <input type="number" class="form-control" name="manager_id" id="manager_id" required>
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

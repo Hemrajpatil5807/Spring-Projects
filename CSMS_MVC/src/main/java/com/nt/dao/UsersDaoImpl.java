@@ -80,6 +80,18 @@ public class UsersDaoImpl implements UsersDao{
 		}
 		return false;
 	}
+
+	@Override
+	public Users getUser(int manager_id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Users user = session.get(Users.class, manager_id);
+		
+		if(user!=null)
+			return user;
+		else
+		    return null;
+	}
 	
 	
 	

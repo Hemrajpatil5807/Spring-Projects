@@ -50,6 +50,13 @@ public class USersServiceImpl implements UsersService{
 		
 		return usersDao.deleteUser(id);
 	}
+
+	@Override
+	@Transactional
+	public Users getUser(int manager_id) {
+		
+		return usersDao.getUser(manager_id);
+	}
 	
 	
 	

@@ -19,4 +19,6 @@ public interface UsersService {
 
 	boolean deleteUser(int id);
 
+	Users getUser(int manager_id);
+
 }
