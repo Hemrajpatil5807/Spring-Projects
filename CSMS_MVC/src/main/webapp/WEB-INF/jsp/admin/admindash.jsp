@@ -132,7 +132,7 @@ body {
 				<div class="mt-4">
 					<h4>Quick Actions</h4>
 					<div class="d-flex gap-3 flex-wrap">
-						<a href="${pageContext.request.contextPath}/admin/sites/add" class="btn btn-primary"> 
+						<a href="addsite" class="btn btn-primary"> 
 						   <i class="fa-solid fa-plus"></i> Add Site </a> 
 						<a href="${pageContext.request.contextPath}/admin/materials/add" class="btn btn-success"> 
 						     <i class="fa-solid fa-plus"></i> Add Material </a> 

@@ -52,6 +52,15 @@ public class Sites {
 		this.endDate = endDate;
 		this.manager_id = manager_id;
 	}
+	
+    public Sites( String site_name, String location, String startDate, String endDate, Users manager_id) {
+		
+		this.site_name = site_name;
+		this.location = location;
+		this.startDate = LocalDate.parse(startDate);
+		this.endDate = LocalDate.parse(endDate);
+		this.manager_id = manager_id;
+	}
 
 	public int getSite_id() {
 		return site_id;
