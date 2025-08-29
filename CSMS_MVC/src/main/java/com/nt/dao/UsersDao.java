@@ -14,5 +14,7 @@ public interface UsersDao {
 	Users loginUser(String username, String password);
 
 	List<Users> getUsers();
+
+	boolean updateUser(Users user);
 	
 }

@@ -49,6 +49,22 @@ public class UsersDaoImpl implements UsersDao{
 		
 		return users;
 	}
+
+	@Override
+	public boolean updateUser(Users user) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Users u = session.get(Users.class, user.getId());
+		System.out.println(u +" "+ user.getId());
+//		u.setName(user.getName());
+//		u.setEmail(user.getEmail());
+//		u.setPassword(user.getPassword());
+//		u.setRole(user.getRole());
+//		
+//		session.update(u);
+		
+		return true;
+	}
 	
 	
 	

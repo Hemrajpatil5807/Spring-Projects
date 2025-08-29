@@ -36,6 +36,13 @@ public class USersServiceImpl implements UsersService{
 	
 		return usersDao.getUsers();
 	}
+
+	@Override
+	@Transactional
+	public boolean updateUser(Users user) {
+		
+		return usersDao.updateUser(user);
+	}
 	
 	
 	

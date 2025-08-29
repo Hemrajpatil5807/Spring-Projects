@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,6 +35,17 @@ public class UsersController {
 		 return new ModelAndView("register", "message", "User registered successfully!");
 	}
 	
+	@PostMapping("/adduser")
+	public ModelAndView addUser(@ModelAttribute Users user , Model model) {
+		
+//		Users user = new Users("Sagar Patil", "sagarpatil0134@gmail.com", "sagar@0134", "ADMIN");
+		 System.out.println(user);
+		 usersService.registerUser(user);
+		 model.addAttribute("message", "User Added Successfully !");
+		
+		 return manageUsers();
+	}
+	
 	
 	// Login User
 	@RequestMapping("/loginUser")
@@ -55,15 +67,31 @@ public class UsersController {
 	
 	
 	@RequestMapping("/manageusers")
-	public ModelAndView manageUsers( Model model) {
+	public ModelAndView manageUsers() {
 		
 		 List<Users> users = usersService.getUsers();
-		 model.addAllAttributes(users);
+//		 model.addAllAttributes(users);
 		
 	    return new ModelAndView("admin/users/user", "users", users); 	
 	}
 	
-	
+	@PostMapping("/updateuser")
+	public ModelAndView updateUser(@ModelAttribute("user") Users user , Model model) {
+		
+		boolean isUpdated = usersService.updateUser(user);
+		
+		if(isUpdated) {
+			
+			 model.addAttribute("message", "User Update Successfully !");
+
+			 return manageUsers(); 
+		}else {
+			 model.addAttribute("message", "User Not Updated !");
+
+			 return manageUsers(); 
+		}
+		
+	}
 	
 	
 }

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Users - Construction Management</title>
+    <title>Admin | Manage Users </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -42,13 +42,24 @@
     <%@ include file="/WEB-INF/jsp/admin/adminav.jsp" %>
 </div>
 	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content">
-		<div
-			class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
 			<h4>Welcome,<c:out value="${sessionScope.username}" />👷 </h4>
 			<h2><a class="navbar-brand" href="admindash">🏗️ Matoshree Construction.</a></h2>
 		</div>
 		<div class="container">
 			<h2 class="mb-4">Manage Users</h2>
+			
+              <c:if test="${not empty message}">
+                 <div id="messageBox" style="color: ${messageType == 'error' ? 'red' : 'green'};">
+                      ${message}
+                 </div>
+                <script>
+                      setTimeout(() => {
+                              const box = document.getElementById("messageBox");
+                              if (box) box.style.display = "none";
+                          }, 3000);
+                </script>
+             </c:if>
 
 			<!-- Add User Button -->
 			<button class="btn btn-primary mb-3" data-bs-toggle="modal"
@@ -79,7 +90,7 @@
 								<button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editUserModal${user.id}">
 									<i class="fa fa-edit"></i>
 								</button> <!-- Delete Button -->
-								 <a	href="${pageContext.request.contextPath}/admin/users/delete/${user.id}" class="btn btn-sm btn-danger"
+								 <a	href="deleteuser/${user.id}" class="btn btn-sm btn-danger"
 								      onclick="return confirm('Are you sure you want to delete this user?');">
 									<i class="fa fa-trash"></i>
 							    </a>
@@ -91,9 +102,7 @@
 							tabindex="-1" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form
-										action="${pageContext.request.contextPath}/admin/users/update"
-										method="post">
+									<form action="updateuser" method="post" modelAttribute="user">
 										<div class="modal-header">
 											<h5 class="modal-title">Edit User</h5>
 											<button type="button" class="btn-close"
@@ -107,9 +116,8 @@
 													value="${user.name}" required>
 											</div>
 											<div class="mb-3">
-												<label class="form-label">Email</label> <input type="email"
-													name="email" class="form-control" value="${user.email}"
-													required>
+												<label class="form-label">Email</label> 
+												   <input type="email" name="email" class="form-control" value="${user.email}" required>
 											</div>
 											<div class="mb-3">
 												<label class="form-label">Role</label> <select name="role"
@@ -145,7 +153,7 @@
 <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="${pageContext.request.contextPath}/admin/users/add" method="post">
+            <form action="adduser" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title">Add User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -153,7 +161,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" required>
+                        <input type="text" name="name" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
@@ -163,8 +171,8 @@
                         <label class="form-label">Role</label>
                         <select name="role" class="form-select" required>
                             <option value="ADMIN">Admin</option>
-                            <option value="MANAGER">Manager</option>
-                            <option value="STAFF">Staff</option>
+                            <option value="SITE_MANAGER">Site Manager</option>
+                            <option value="ACCOUNTANT">Accountant</option>
                         </select>
                     </div>
                     <div class="mb-3">

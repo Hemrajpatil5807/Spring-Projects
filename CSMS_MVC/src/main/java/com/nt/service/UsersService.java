@@ -15,4 +15,6 @@ public interface UsersService {
 
 	List<Users> getUsers();
 
+	boolean updateUser(Users user);
+
 }
