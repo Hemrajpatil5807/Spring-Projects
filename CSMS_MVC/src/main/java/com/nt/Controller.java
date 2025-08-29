@@ -35,11 +35,11 @@ public class Controller {
 		return "admin/adduser";
 	}
 	
-	@GetMapping("/manageusers")
-	public String usersPage() {
-		return "admin/users/user";
-	}
-	
+//	@GetMapping("/manageusers")
+//	public String usersPage() {
+//		return "admin/users/user";
+//	}
+//	
 	
 	
 }

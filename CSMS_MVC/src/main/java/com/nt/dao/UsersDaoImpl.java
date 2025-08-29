@@ -1,11 +1,8 @@
 package com.nt.dao;
 
 
-
-
-
-
 import java.util.List;
+
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -48,7 +45,7 @@ public class UsersDaoImpl implements UsersDao{
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-	    List<Users> users =  session.createQuery("FROM users").list();
+	    List<Users> users =  session.createQuery("FROM Users").list();
 		
 		return users;
 	}

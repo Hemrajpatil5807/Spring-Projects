@@ -70,16 +70,16 @@
 				<tbody>
 					<c:forEach var="user" items="${users}">
 						<tr>
-							<td>${user.userId}</td>
-							<td>${user.username}</td>
+							<td>${user.id}</td>
+							<td>${user.name}</td>
 							<td>${user.role}</td>
 							<td>${user.email}</td>
 							<td>
 								<!-- Edit Button -->
-								<button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editUserModal${user.userId}">
+								<button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editUserModal${user.id}">
 									<i class="fa fa-edit"></i>
 								</button> <!-- Delete Button -->
-								 <a	href="${pageContext.request.contextPath}/admin/users/delete/${user.userId}" class="btn btn-sm btn-danger"
+								 <a	href="${pageContext.request.contextPath}/admin/users/delete/${user.id}" class="btn btn-sm btn-danger"
 								      onclick="return confirm('Are you sure you want to delete this user?');">
 									<i class="fa fa-trash"></i>
 							    </a>
@@ -87,7 +87,7 @@
 						</tr>
 
 						<!-- Edit User Modal -->
-						<div class="modal fade" id="editUserModal${user.userId}"
+						<div class="modal fade" id="editUserModal${user.id}"
 							tabindex="-1" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -100,11 +100,11 @@
 												data-bs-dismiss="modal"></button>
 										</div>
 										<div class="modal-body">
-											<input type="hidden" name="userId" value="${user.userId}">
+											<input type="hidden" name="userId" value="${user.id}">
 											<div class="mb-3">
 												<label class="form-label">Username</label> <input
 													type="text" name="username" class="form-control"
-													value="${user.username}" required>
+													value="${user.name}" required>
 											</div>
 											<div class="mb-3">
 												<label class="form-label">Email</label> <input type="email"
@@ -116,8 +116,8 @@
 													class="form-select" required>
 													<option value="ADMIN" ${user.role=='ADMIN'?'selected':''}>Admin</option>
 													<option value="MANAGER"
-														${user.role=='MANAGER'?'selected':''}>Manager</option>
-													<option value="STAFF" ${user.role=='STAFF'?'selected':''}>Staff</option>
+														${user.role=='SITE_MANAGER'?'selected':''}>Site Manager</option>
+													<option value="STAFF" ${user.role=='ACCOUNTANT'?'selected':''}>Accountant</option>
 												</select>
 											</div>
 											<div class="mb-3">
