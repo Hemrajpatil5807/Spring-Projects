@@ -51,7 +51,7 @@ body {
 			<!-- Sidebar -->
 			<nav class="col-md-2 d-none d-md-block sidebar">
 				<div class="position-sticky pt-3">
-					<h4 class="text-center py-3">Admin Panel</h4>
+					<a href="admindash"><h4 class="text-center py-3">Admin Panel</h4></a>
 					<a href="${pageContext.request.contextPath}/admin/sites">
 					   <i class="fa-solid fa-building"></i> Manage Sites</a>
 				    <a href="${pageContext.request.contextPath}/admin/materials">

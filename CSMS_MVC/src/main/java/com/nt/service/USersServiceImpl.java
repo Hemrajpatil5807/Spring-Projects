@@ -43,6 +43,13 @@ public class USersServiceImpl implements UsersService{
 		
 		return usersDao.updateUser(user);
 	}
+
+	@Override
+	@Transactional
+	public boolean deleteUser(int id) {
+		
+		return usersDao.deleteUser(id);
+	}
 	
 	
 	

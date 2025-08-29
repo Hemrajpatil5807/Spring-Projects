@@ -7,7 +7,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,22 +79,35 @@ public class UsersController {
 	}
 	
 	@PostMapping("/updateuser")
-	public ModelAndView updateUser(@ModelAttribute("user") Users user , Model model) {
+	public String updateUser(@ModelAttribute("bean") Users user , Model model) {
 		
+		System.out.println(user);
 		boolean isUpdated = usersService.updateUser(user);
 		
 		if(isUpdated) {
-			
 			 model.addAttribute("message", "User Update Successfully !");
-
-			 return manageUsers(); 
+			 return "forward:/manageusers"; 
 		}else {
 			 model.addAttribute("message", "User Not Updated !");
-
-			 return manageUsers(); 
-		}
-		
+        	 return "forward:/manageusers"; 
+		}	
 	}
+	
+	@GetMapping("/deleteuser/{id}")
+	public ModelAndView deleteUser(@PathVariable int id , Model model) {
+		
+		System.out.println(id);
+		boolean isDelete = usersService.deleteUser(id);
+		if(isDelete) {
+			 model.addAttribute("message", "User Delete Successfully !");
+			 return manageUsers(); 
+		}else {
+			 model.addAttribute("message", "User Not Deleted !");
+         	 return manageUsers(); 
+		} 
+	}
+	
+	
 	
 	
 }

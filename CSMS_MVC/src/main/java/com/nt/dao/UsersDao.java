@@ -16,5 +16,7 @@ public interface UsersDao {
 	List<Users> getUsers();
 
 	boolean updateUser(Users user);
+
+	boolean deleteUser(int id);
 	
 }

@@ -19,7 +19,6 @@
             width: 240px;
             background-color: #343a40;
             color: white;
-            padding-top: 20px;
         }
         .sidebar a {
             color: white;
@@ -47,11 +46,12 @@
 			<h2><a class="navbar-brand" href="admindash">🏗️ Matoshree Construction.</a></h2>
 		</div>
 		<div class="container">
+		  <div class="container d-flex justify-content-between">
 			<h2 class="mb-4">Manage Users</h2>
-			
+		
               <c:if test="${not empty message}">
                  <div id="messageBox" style="color: ${messageType == 'error' ? 'red' : 'green'};">
-                      ${message}
+                    <strong> ${message}</strong> 
                  </div>
                 <script>
                       setTimeout(() => {
@@ -60,7 +60,7 @@
                           }, 3000);
                 </script>
              </c:if>
-
+             </div>
 			<!-- Add User Button -->
 			<button class="btn btn-primary mb-3" data-bs-toggle="modal"
 				data-bs-target="#addUserModal">
@@ -72,7 +72,7 @@
 				<thead class="table-dark">
 					<tr>
 						<th>User ID</th>
-						<th>Username</th>
+						<th>Name</th>
 						<th>Role</th>
 						<th>Email</th>
 						<th>Actions</th>
@@ -102,17 +102,17 @@
 							tabindex="-1" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form action="updateuser" method="post" modelAttribute="user">
+									<form action="updateuser" method="post" ModelAttribute="bean">
 										<div class="modal-header">
 											<h5 class="modal-title">Edit User</h5>
 											<button type="button" class="btn-close"
 												data-bs-dismiss="modal"></button>
 										</div>
 										<div class="modal-body">
-											<input type="hidden" name="userId" value="${user.id}">
+											<input type="hidden" name="id" value="${user.id}">
 											<div class="mb-3">
-												<label class="form-label">Username</label> <input
-													type="text" name="username" class="form-control"
+												<label class="form-label">Name</label> <input
+													type="text" name="name" class="form-control"
 													value="${user.name}" required>
 											</div>
 											<div class="mb-3">
@@ -123,9 +123,9 @@
 												<label class="form-label">Role</label> <select name="role"
 													class="form-select" required>
 													<option value="ADMIN" ${user.role=='ADMIN'?'selected':''}>Admin</option>
-													<option value="MANAGER"
+													<option value="SITE_MANAGER"
 														${user.role=='SITE_MANAGER'?'selected':''}>Site Manager</option>
-													<option value="STAFF" ${user.role=='ACCOUNTANT'?'selected':''}>Accountant</option>
+													<option value="ACCOUNTANT" ${user.role=='ACCOUNTANT'?'selected':''}>Accountant</option>
 												</select>
 											</div>
 											<div class="mb-3">
@@ -160,7 +160,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label">Username</label>
+                        <label class="form-label">Name</label>
                         <input type="text" name="name" class="form-control" required>
                     </div>
                     <div class="mb-3">
