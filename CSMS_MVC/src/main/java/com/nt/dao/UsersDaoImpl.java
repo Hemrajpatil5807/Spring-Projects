@@ -77,10 +77,13 @@ public class UsersDaoImpl implements UsersDao{
 		if(user!=null) {
 		   session.delete(user);
 		   return true;
+		}else {
+	     	return false;
 		}
-		return false;
+		
 	}
 
+	
 	@Override
 	public Users getUser(int manager_id) {
 		

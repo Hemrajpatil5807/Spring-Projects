@@ -34,31 +34,36 @@ public class Sites {
 	@Column(name="end_date")
     private LocalDate endDate;
 	
-    
+	@Column(name="status")
+    private String status;
+	
     @ManyToOne
     @JoinColumn(name="user_id")
 	private Users manager_id;
+    
 
 	public Sites() {
 
 	}
 
-	public Sites(int site_id, String site_name, String location, LocalDate startDate, LocalDate endDate, Users manager_id) {
+	public Sites(int site_id, String site_name, String location, String startDate, String endDate, String status, Users manager_id) {
 		
 		this.site_id = site_id;
 		this.site_name = site_name;
 		this.location = location;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.startDate = LocalDate.parse(startDate);
+		this.endDate = LocalDate.parse(endDate);
+		this.status = status;
 		this.manager_id = manager_id;
 	}
 	
-    public Sites( String site_name, String location, String startDate, String endDate, Users manager_id) {
+    public Sites( String site_name, String location, String startDate, String endDate, String status, Users manager_id) {
 		
 		this.site_name = site_name;
 		this.location = location;
 		this.startDate = LocalDate.parse(startDate);
 		this.endDate = LocalDate.parse(endDate);
+		this.status = status;
 		this.manager_id = manager_id;
 	}
 
@@ -102,6 +107,14 @@ public class Sites {
 		this.endDate = endDate;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public Users getManager_id() {
 		return manager_id;
 	}
@@ -113,8 +126,9 @@ public class Sites {
 	@Override
 	public String toString() {
 		return "Sites [site_id=" + site_id + ", site_name=" + site_name + ", location=" + location + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", manager_id=" + manager_id + "]";
+				+ startDate + ", endDate=" + endDate + ", status=" + status + ", manager_id=" + manager_id + "]";
 	}
+
     
     
     

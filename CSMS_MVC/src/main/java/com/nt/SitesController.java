@@ -1,11 +1,16 @@
 package com.nt;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.nt.dto.SitesDto;
 import com.nt.entity.Sites;
@@ -28,6 +33,46 @@ public class SitesController {
 		return "admin/admindash";
 	}
 	
+	
+	
+	@RequestMapping("/managesites")
+	public ModelAndView manageSites() {
+		
+		 List<Sites> sites = sitesService.getSites();
+//		 model.addAllAttributes(users);
+		
+	    return  new ModelAndView("admin/sites/site", "sites", sites); 	
+	}
+	
+	@PostMapping("/updatesite")
+	public String updateSite(@ModelAttribute("bean") SitesDto sitedto , Model model) {
+		
+		System.out.println(sitedto);
+		boolean isUpdated = sitesService.updateSite(sitedto);
+		
+		if(isUpdated) {
+			 model.addAttribute("message", "Site Update Successfully !");
+			 return "forward:/managesites"; 
+		}else {
+			 model.addAttribute("message", "Site Not Updated !");
+        	 return "forward:/managesites"; 
+		}	
+	}
+	
+	
+	@GetMapping("/deletesite/{site_id}")
+	public ModelAndView deleteSite(@PathVariable int site_id , Model model) {
+		
+		System.out.println(site_id);
+		boolean isDelete = sitesService.deleteSite(site_id);
+		if(isDelete) {
+			 model.addAttribute("message", "Site Delete Successfully !");
+			 return manageSites(); 
+		}else {
+			 model.addAttribute("message", "Site Not Deleted !");
+         	 return manageSites(); 
+		} 
+	}
 	
 	
 }

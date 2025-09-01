@@ -43,6 +43,14 @@ public class Materials {
 		this.unitPrice = unitPrice;
 	}
 
+	public Materials(String material_name, String unit, int available_stock, double unitPrice) {
+
+		this.material_name = material_name;
+		this.unit = unit;
+		this.available_stock = available_stock;
+		this.unitPrice = unitPrice;
+	}
+	
 	public int getMaterial_id() {
 		return material_id;
 	}

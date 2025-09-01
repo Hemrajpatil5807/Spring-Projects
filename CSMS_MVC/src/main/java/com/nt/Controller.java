@@ -39,7 +39,11 @@ public class Controller {
 //	public String usersPage() {
 //		return "admin/users/user";
 //	}
-//	
+
+//	@GetMapping("/managesites")
+//	public String usersPage() {
+//		return "admin/sites/site";
+//	}
 	
 	
 }

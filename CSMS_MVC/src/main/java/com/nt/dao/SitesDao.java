@@ -1,5 +1,7 @@
 package com.nt.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.nt.entity.Sites;
@@ -8,5 +10,11 @@ import com.nt.entity.Sites;
 public interface SitesDao {
 
 	void addSite(Sites site);
+
+	List<Sites> getSites();
+
+	boolean updateSite(Sites site);
+
+	boolean deleteSite(int id);
 
 }

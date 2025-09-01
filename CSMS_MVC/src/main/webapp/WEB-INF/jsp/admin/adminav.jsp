@@ -43,7 +43,7 @@
         <nav class="col-md-2 d-none d-md-block sidebar">
             <div class="position-sticky pt-3">
 				<a href="admindash"><h4 class="text-center py-3">Admin Panel</h4></a>
-                <a href="${pageContext.request.contextPath}/admin/sites"><i class="fa-solid fa-building"></i> Manage Sites</a>
+                <a href="managesites"><i class="fa-solid fa-building"></i> Manage Sites</a>
                 <a href="${pageContext.request.contextPath}/admin/materials"><i class="fa-solid fa-cubes"></i> Manage Materials</a>
                 <a href="${pageContext.request.contextPath}/admin/suppliers"><i class="fa-solid fa-truck"></i> Manage Suppliers</a>
                 <a href="${pageContext.request.contextPath}/admin/material-usage"><i class="fa-solid fa-warehouse"></i> Material Usage</a>

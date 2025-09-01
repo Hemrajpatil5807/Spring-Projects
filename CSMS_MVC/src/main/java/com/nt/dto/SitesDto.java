@@ -14,6 +14,8 @@ public class SitesDto {
     private String startDate;
 	  
     private String endDate;
+    
+    private String status;
 
 	private int manager_id;
 
@@ -21,22 +23,24 @@ public class SitesDto {
 		
 	}
 
-	public SitesDto(int site_id, String site_name, String location, String startDate, String endDate, int manager_id) {
+	public SitesDto(int site_id, String site_name, String location, String startDate, String endDate, String status, int manager_id) {
 	
 		this.site_id = site_id;
 		this.site_name = site_name;
 		this.location = location;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.status = status;
 		this.manager_id = manager_id;
 	}
 	
-	public SitesDto(String site_name, String location, String startDate, String endDate, int manager_id) {
+	public SitesDto(String site_name, String location, String startDate, String endDate, String status, int manager_id) {
 		
 		this.site_name = site_name;
 		this.location = location;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.status = status;
 		this.manager_id = manager_id;
 	}
 
@@ -80,6 +84,14 @@ public class SitesDto {
 		this.endDate = endDate;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public int getManager_id() {
 		return manager_id;
 	}
@@ -91,8 +103,10 @@ public class SitesDto {
 	@Override
 	public String toString() {
 		return "SitesDto [site_id=" + site_id + ", site_name=" + site_name + ", location=" + location + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", manager_id=" + manager_id + "]";
+				+ startDate + ", endDate=" + endDate + ", status=" + status + ", manager_id=" + manager_id + "]";
 	}
+
+	
 	
 
 	

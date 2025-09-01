@@ -52,7 +52,7 @@ body {
 			<nav class="col-md-2 d-none d-md-block sidebar">
 				<div class="position-sticky pt-3">
 					<a href="admindash"><h4 class="text-center py-3">Admin Panel</h4></a>
-					<a href="${pageContext.request.contextPath}/admin/sites">
+					<a href="managesites">
 					   <i class="fa-solid fa-building"></i> Manage Sites</a>
 				    <a href="${pageContext.request.contextPath}/admin/materials">
 						<i class="fa-solid fa-cubes"></i> Manage Materials</a> 
@@ -134,8 +134,8 @@ body {
 					<div class="d-flex gap-3 flex-wrap">
 						<button class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#addSiteModal"> 
 						   <i class="fa-solid fa-plus"></i> Add Site </button> 
-						<a href="${pageContext.request.contextPath}/admin/materials/add" class="btn btn-success"> 
-						     <i class="fa-solid fa-plus"></i> Add Material </a> 
+						<button class="btn btn-success" data-bs-toggle="modal"data-bs-target="#addMaterialModal"> 
+						     <i class="fa-solid fa-plus"></i> Add Material </button> 
 					   <a href="${pageContext.request.contextPath}/admin/expenses/add" class="btn btn-warning text-white">
 						  <i class="fa-solid fa-plus"></i> Add Expense </a>
 					   <a href="adduser" class="btn btn-info text-white">
@@ -213,9 +213,55 @@ body {
                         <label class="form-label">End Date</label>
                         <input type="date" name="endDate" class="form-control" required>
                     </div>
+                      <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select name="status" class="form-select" required>
+                            <option value="ACTIVE">Active</option>
+                            <option value="COMPLETED">Completed</option>
+                            <option value="ON_HOLD">On Hold</option>
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <label for="manager_id" class="form-label">Site Manager ID</label>
                         <input type="number" class="form-control" name="manager_id" id="manager_id" required>
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+	<!-- Add Material Modal -->
+<div class="modal fade" id="addMaterialModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="addmaterial" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Material</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Material Name</label>
+                        <input type="text" name="material_name" class="form-control" placeholder="Ex. cement, steel, sand" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Unit kg/bag/ton/</label>
+                        <input type="text" name="unit" class="form-control" placeholder="Ex. kg , quintal, ton , bag , trip" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Available Stock</label>
+                        <input type="number" name="available_stock" class="form-control" placeholder="Ex. 100 Bag, 2 ton, 10 trip" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price/Unit</label>
+                        <input type="money" name="unitPrice" class="form-control" placeholder="Ex.5000 " required>
                     </div>
                    
                 </div>
