@@ -54,7 +54,7 @@ body {
 					<a href="admindash"><h4 class="text-center py-3">Admin Panel</h4></a>
 					<a href="managesites">
 					   <i class="fa-solid fa-building"></i> Manage Sites</a>
-				    <a href="${pageContext.request.contextPath}/admin/materials">
+				    <a href="managematerials">
 						<i class="fa-solid fa-cubes"></i> Manage Materials</a> 
 					<a href="${pageContext.request.contextPath}/admin/suppliers">
 					 <i class="fa-solid fa-truck"></i> Manage Suppliers</a>
@@ -241,7 +241,7 @@ body {
 <div class="modal fade" id="addMaterialModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="addmaterial" method="post">
+            <form action="registermaterial" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title">Add Material</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
