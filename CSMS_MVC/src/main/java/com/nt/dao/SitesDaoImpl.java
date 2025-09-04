@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.nt.entity.Sites;
+import com.nt.entity.Users;
 
 @Repository
 public class SitesDaoImpl implements SitesDao{
@@ -65,6 +66,18 @@ public class SitesDaoImpl implements SitesDao{
 		}else {
 	     	return false;
 		}
+	}
+
+	@Override
+	public Sites getSite(int site_id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Sites site = session.get(Sites.class, site_id);
+		
+		if(site!=null)
+			return site;
+		else
+		    return null;
 	}
 	
 	

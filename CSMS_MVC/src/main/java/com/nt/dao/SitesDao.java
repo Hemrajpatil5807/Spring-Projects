@@ -17,4 +17,6 @@ public interface SitesDao {
 
 	boolean deleteSite(int id);
 
+	Sites getSite(int site_id);
+
 }

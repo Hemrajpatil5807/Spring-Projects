@@ -60,7 +60,7 @@ body {
 					 <i class="fa-solid fa-truck"></i> Manage Suppliers</a>
 					<a href="${pageContext.request.contextPath}/admin/material-usage">
 					  <i class="fa-solid fa-warehouse"></i> Material Usage</a> 
-					<a href="${pageContext.request.contextPath}/admin/expenses">
+					<a href="manageexpenses">
 					  <i class="fa-solid fa-coins"></i> Expenses</a> 
 					<a href="manageusers">
 					  <i class="fa-solid fa-users"></i> Manage Users</a> 
@@ -136,8 +136,8 @@ body {
 						   <i class="fa-solid fa-plus"></i> Add Site </button> 
 						<button class="btn btn-success" data-bs-toggle="modal"data-bs-target="#addMaterialModal"> 
 						     <i class="fa-solid fa-plus"></i> Add Material </button> 
-					   <a href="${pageContext.request.contextPath}/admin/expenses/add" class="btn btn-warning text-white">
-						  <i class="fa-solid fa-plus"></i> Add Expense </a>
+					   <button class="btn btn-warning text-white" data-bs-toggle="modal"data-bs-target="#addExpenseModal">
+						  <i class="fa-solid fa-plus"></i> Add Expense </button>
 					   <a href="adduser" class="btn btn-info text-white">
 					      <i class="fa-solid fa-user-plus"></i> Add User </a>
 					</div>
@@ -262,6 +262,44 @@ body {
                     <div class="mb-3">
                         <label class="form-label">Price/Unit</label>
                         <input type="money" name="unitPrice" class="form-control" placeholder="Ex.5000 " required>
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+	<!-- Add Expense Modal -->
+<div class="modal fade" id="addExpenseModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="registerexpense" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Expense</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Site Id</label>
+                        <input type="number" name="site_id" class="form-control" placeholder="Ex. 1 , 2, 12" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Expense </label>
+                        <input type="text" name="expense_type" class="form-control" placeholder="Ex.Labour, Transport, Equipment, etc.)" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Amount</label>
+                        <input type="price" name="amount" class="form-control" placeholder="Ex.5000" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date</label>
+                        <input type="date" name="date" class="form-control" placeholder="Ex. 10-9-2025 " required>
                     </div>
                    
                 </div>

@@ -47,7 +47,7 @@
                 <a href="managematerials"><i class="fa-solid fa-cubes"></i> Manage Materials</a>
                 <a href="${pageContext.request.contextPath}/admin/suppliers"><i class="fa-solid fa-truck"></i> Manage Suppliers</a>
                 <a href="${pageContext.request.contextPath}/admin/material-usage"><i class="fa-solid fa-warehouse"></i> Material Usage</a>
-                <a href="${pageContext.request.contextPath}/admin/expenses"><i class="fa-solid fa-coins"></i> Expenses</a>
+                <a href="manageexpenses"><i class="fa-solid fa-coins"></i> Expenses</a>
                 <a href="manageusers"><i class="fa-solid fa-users"></i> Manage Users</a>
                 <a href="${pageContext.request.contextPath}/admin/reports"><i class="fa-solid fa-chart-line"></i> Reports</a>
                 <a href="index" class="text-danger"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>

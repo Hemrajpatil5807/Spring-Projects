@@ -55,6 +55,12 @@ public class SitesServiceImpl implements SitesService{
 		
 		return sitesDao.deleteSite(id);
 	}
+
+	@Override
+	public Sites getSite(int site_id) {
+
+		return sitesDao.getSite(site_id);
+	}
 	
 	
 

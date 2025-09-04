@@ -18,6 +18,8 @@ public interface SitesService {
 
 	boolean deleteSite(int id);
 
+	Sites getSite(int i);
+
 
 	
 	
