@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.nt.entity.Sites;
 import com.nt.entity.Users;
+import com.nt.service.SitesService;
 import com.nt.service.UsersService;
 
 @Controller
@@ -27,11 +29,13 @@ public class UsersController {
 	@Autowired
 	UsersService usersService;
 	
+	@Autowired
+	SitesService sitesService;
+	
 	// Register User / Add User
 	@PostMapping("/registerUser")
 	public ModelAndView register(@ModelAttribute Users user) {
 		
-//		Users user = new Users("Sagar Patil", "sagarpatil0134@gmail.com", "sagar@0134", "ADMIN");
 		 System.out.println(user);
 		 usersService.registerUser(user);
 		
@@ -41,7 +45,6 @@ public class UsersController {
 	@PostMapping("/adduser")
 	public ModelAndView addUser(@ModelAttribute Users user , Model model) {
 		
-//		Users user = new Users("Sagar Patil", "sagarpatil0134@gmail.com", "sagar@0134", "ADMIN");
 		 System.out.println(user);
 		 usersService.registerUser(user);
 		 model.addAttribute("message", "User Added Successfully !");
@@ -56,10 +59,20 @@ public class UsersController {
 		
 	   Users user = usersService.loginUser(email, password);
 		
-		if(user!=null) {
+		if(user!=null && user.getRole().equals("ADMIN")) {
 			session.setAttribute("username", user.getName());
 			model.addAttribute("message" , "Login Succefully !");
 			return "admin/admindash";
+			
+		 // Code Change To Site Manager Login
+		}else if(user!=null && user.getRole().equals("SITE_MANAGER")){
+			session.setAttribute("username", user.getName());
+			model.addAttribute("message" , "Login Succefully !");
+			
+			List<Sites> sites = sitesService.getSites();
+			model.addAttribute("sites",sites);
+		
+			return "manager/managerdash";
 			
 		}else {
 			model.addAttribute("message" , "Invalid Credentials");

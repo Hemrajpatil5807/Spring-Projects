@@ -160,9 +160,9 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Site</label>
-                        <select name="siteId" class="form-select" required>
-                            <c:forEach var="site" items="${sites}">
-                                <option value="${site.siteId}">${site.siteName}</option>
+                        <select name="site_id" class="form-select" required>
+                            <c:forEach var="site" items="${site_id}">
+                                <option value="${site.site_id}">${site.site_name}</option>
                             </c:forEach>
                         </select>
                     </div>
