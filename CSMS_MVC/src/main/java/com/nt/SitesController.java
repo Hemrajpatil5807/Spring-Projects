@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.nt.dto.SitesDto;
@@ -56,6 +57,22 @@ public class SitesController {
 		}else {
 			 model.addAttribute("message", "Site Not Updated !");
         	 return "forward:/managesites"; 
+		}	
+	}
+	
+	@PostMapping("/updatesitestatus")
+	public String updateSiteStatus(@RequestParam int siteId, @RequestParam int userId , @RequestParam String status, Model model) {
+		
+		System.out.println(userId);
+		boolean isUpdated = sitesService.updateSiteStatus(siteId, status);
+		model.addAttribute("userId",userId);
+		
+		if(isUpdated) {
+			 model.addAttribute("message", "Site Update Successfully !");
+			 return "redirect:/managerdash"; 
+		}else {
+			 model.addAttribute("message", "Site Not Updated !");
+        	 return "redirect:/managerdash"; 
 		}	
 	}
 	

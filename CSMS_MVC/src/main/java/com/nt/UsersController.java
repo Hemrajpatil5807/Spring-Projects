@@ -69,7 +69,7 @@ public class UsersController {
 			session.setAttribute("username", user.getName());
 			model.addAttribute("message" , "Login Succefully !");
 			
-			List<Sites> sites = sitesService.getSites();
+			List<Sites> sites = sitesService.getManagerSites(user.getId());
 			model.addAttribute("sites",sites);
 		
 			return "manager/managerdash";

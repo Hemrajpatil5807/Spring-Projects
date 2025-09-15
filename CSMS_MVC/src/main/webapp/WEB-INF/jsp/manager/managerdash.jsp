@@ -23,7 +23,11 @@
 
 			<!-- Main Content -->
 			<div class="col-md-10 mt-4">
-				<h2 class="mb-4">Welcome, ${sessionScope.username}</h2>
+				<div
+					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+					<h4> Welcome, <c:out value="${sessionScope.username}" /> 👷 </h4>
+					<h2> <a class="navbar-brand" href="admindash">🏗️ Matoshree Construction.</a> </h2>
+				</div>
 
 				<!-- Summary Cards -->
 				<div class="row mb-4">
@@ -110,7 +114,7 @@
 										tabindex="-1" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
-												<form action="updatesite" method="post">
+												<form action="updatesitestatus" method="post">
 													<div class="modal-header">
 														<h5 class="modal-title">Update Progress for ${site.site_name}</h5>
 														<button type="button" class="btn-close"
@@ -118,6 +122,7 @@
 													</div>
 													<div class="modal-body">
 														<input type="hidden" name="siteId" value="${site.site_id}">
+														<input type="hidden" name="userId" value="${site.manager_id.id}">
 														<div class="mb-3">
 															<label class="form-label">Status</label> <select
 																name="status" class="form-select" required>

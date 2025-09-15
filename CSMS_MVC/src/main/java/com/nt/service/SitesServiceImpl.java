@@ -57,9 +57,24 @@ public class SitesServiceImpl implements SitesService{
 	}
 
 	@Override
+	@Transactional
 	public Sites getSite(int site_id) {
 
 		return sitesDao.getSite(site_id);
+	}
+
+	@Override
+	@Transactional
+	public boolean updateSiteStatus(int siteId, String status) {
+		
+		return sitesDao.updateSiteStatus(siteId, status);
+	}
+
+	@Override
+	@Transactional
+	public List<Sites> getManagerSites(int userId) {
+		
+		return sitesDao.getManagerSites(userId);
 	}
 	
 	

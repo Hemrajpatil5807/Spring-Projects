@@ -19,4 +19,8 @@ public interface SitesDao {
 
 	Sites getSite(int site_id);
 
+	boolean updateSiteStatus(int siteId, String status);
+
+	List<Sites> getManagerSites(int userId);
+
 }

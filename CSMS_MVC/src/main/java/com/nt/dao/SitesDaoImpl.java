@@ -2,8 +2,10 @@ package com.nt.dao;
 
 import java.util.List;
 
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -79,6 +81,36 @@ public class SitesDaoImpl implements SitesDao{
 		else
 		    return null;
 	}
+
+	@Override
+	public boolean updateSiteStatus(int siteId, String status) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Sites s = session.get(Sites.class, siteId);
+		s.setStatus(status);
+		if(s!=null) {
+		   session.update(s);
+		   return true;
+		}else {
+			return false;  
+	   }
+	}
+
+	@Override
+	public List<Sites> getManagerSites(int userId) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "FROM Sites s WHERE s.manager_id.id = :userId";
+		Query<Sites> query = session.createQuery(hql, Sites.class);
+		query.setParameter("userId", userId);
+		List<Sites> sites = query.list();
+//		System.out.println(sites);
+		if(sites!=null)
+			return sites;
+		else
+		    return null;
+	}
+	
 	
 	
 	

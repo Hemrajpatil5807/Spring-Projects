@@ -20,6 +20,10 @@ public interface SitesService {
 
 	Sites getSite(int i);
 
+	boolean updateSiteStatus(int siteId, String satus);
+
+	List<Sites> getManagerSites(int userId);
+
 
 	
 	
