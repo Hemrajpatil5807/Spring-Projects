@@ -97,12 +97,14 @@
 											<button class="btn btn-sm btn-warning" data-bs-toggle="modal"
 												data-bs-target="#updateProgressModal${site.site_id}">
 												<i class="fa fa-chart-line"></i> Update Progress
-											</button> <!-- Manage Materials --> <a
-											href="${pageContext.request.contextPath}/manager/materials/${site.site_id}"
-											class="btn btn-sm btn-info"> <i
-												class="fa fa-boxes-stacked"></i> Materials
-										</a> <!-- Manage Expenses --> <a
-											href="${pageContext.request.contextPath}/manager/expenses/${site.site_id}"
+											</button> 
+											<!-- Manage Materials --> 
+											 <button class="btn btn-sm btn-info" data-bs-toggle="modal"
+												data-bs-target="#addMaterialModal${site.site_id}">
+												<i class="fa fa-chart-line"></i> Materials
+											</button>
+										    <!-- Manage Expenses --> 
+										    <a href="${pageContext.request.contextPath}/manager/expenses/${site.site_id}"
 											class="btn btn-sm btn-success"> <i
 												class="fa fa-money-bill"></i> Expenses
 										</a>
@@ -130,6 +132,43 @@
 																<option value="COMPLETED">Completed</option>
 																<option value="ON_HOLD">On Hold</option>
 															</select>
+														</div>
+													</div>
+													<div class="modal-footer">
+														<button type="submit" class="btn btn-success">Update</button>
+														<button type="button" class="btn btn-secondary"
+															data-bs-dismiss="modal">Cancel</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									
+								   <!-- Add Material Modal -->
+									<div class="modal fade" id="addMaterialModal${site.site_id}"
+										tabindex="-1" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<form action="addSiteMaterial" method="post">
+													<div class="modal-header">
+														<h5 class="modal-title">Add Material for ${site.site_name}</h5>
+														<button type="button" class="btn-close"
+															data-bs-dismiss="modal"></button>
+													</div>
+													<div class="modal-body">
+														<input type="hidden" name="site_id" value="${site.site_id}">
+													    <input type="hidden" name="user_id" value="${site.manager_id.id}">
+														<div class="mb-3">
+															<label class="form-label">Material ID</label> 
+															<input type="number" name="material_id">
+														</div>
+														<div class="mb-3">
+															<label class="form-label">Used Quantity</label> 
+															<input type="number" name="used_quantity">
+														</div>
+														<div class="mb-3">
+															<label class="form-label">Date Used</label> 
+															<input type="date" name="date_used">
 														</div>
 													</div>
 													<div class="modal-footer">

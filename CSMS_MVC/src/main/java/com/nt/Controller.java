@@ -2,10 +2,11 @@ package com.nt;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nt.entity.Sites;
@@ -63,9 +64,8 @@ public class Controller {
 //	}
 	
 	@RequestMapping("/managerdash")
-	public String managerdashPage( Model model) {
-		int userId = (int) model.getAttribute("userId");
-		System.out.println(userId);
+	public String managerdashPage( HttpSession session, Model model) {
+		int userId = (int) session.getAttribute("userId");
 		List<Sites> sites = sitesService.getManagerSites(userId);
 		model.addAttribute("sites",sites);
 		return "manager/managerdash";

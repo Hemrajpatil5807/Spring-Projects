@@ -11,7 +11,7 @@ import com.nt.dao.UsersDao;
 import com.nt.entity.Users;
 
 @Service
-public class USersServiceImpl implements UsersService{
+public class UsersServiceImpl implements UsersService{
 
 	@Autowired
 	UsersDao usersDao;

@@ -44,6 +44,13 @@ public class MaterialsServiceImpl implements MaterialsService{
 		
 		return materialsDao.deleteMaterial(material_id);
 	}
+
+	@Override
+	@Transactional
+	public Materials getMaterial(int material_id) {
+		
+		return materialsDao.getMaterial(material_id);
+	}
 	
 	
 

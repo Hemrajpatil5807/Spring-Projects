@@ -1,6 +1,10 @@
 package com.nt;
 
+import java.net.http.HttpRequest;
 import java.util.List;
+
+import javax.security.auth.message.callback.SecretKeyCallback.Request;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,18 +65,18 @@ public class SitesController {
 	}
 	
 	@PostMapping("/updatesitestatus")
-	public String updateSiteStatus(@RequestParam int siteId, @RequestParam int userId , @RequestParam String status, Model model) {
+	public String updateSiteStatus(@RequestParam int siteId, @RequestParam int userId , @RequestParam String status, Model model, HttpSession session) {
 		
 		System.out.println(userId);
 		boolean isUpdated = sitesService.updateSiteStatus(siteId, status);
-		model.addAttribute("userId",userId);
+		session.setAttribute("userId", userId);
 		
 		if(isUpdated) {
 			 model.addAttribute("message", "Site Update Successfully !");
-			 return "redirect:/managerdash"; 
+			 return "forward:/managerdash"; 
 		}else {
 			 model.addAttribute("message", "Site Not Updated !");
-        	 return "redirect:/managerdash"; 
+        	 return "forward:/managerdash"; 
 		}	
 	}
 	

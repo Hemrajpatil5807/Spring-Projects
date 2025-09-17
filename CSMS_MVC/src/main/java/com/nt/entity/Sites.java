@@ -32,7 +32,7 @@ public class Sites {
     private LocalDate startDate;
 	  
 	@Column(name="end_date")
-    private LocalDate endDate;
+    private LocalDate endDate; 
 	
 	@Column(name="status")
     private String status;

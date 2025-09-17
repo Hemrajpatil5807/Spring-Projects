@@ -16,6 +16,8 @@ public interface MaterialsDao {
 	boolean updateMaterial(Materials material);
 
 	boolean deleteMaterial(int material_id);
+
+	Materials getMaterial(int material_id);
 	
 	
 

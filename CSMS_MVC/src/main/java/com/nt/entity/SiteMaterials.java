@@ -40,15 +40,23 @@ public class SiteMaterials {
 	
 	}
 
-	public SiteMaterials(int id, Sites site_id, Materials material_id, int used_quantity, LocalDate date_used) {
+	public SiteMaterials(int id, Sites site_id, Materials material_id, int used_quantity, String date_used) {
 		
 		this.id = id;
 		this.site_id = site_id;
 		this.material_id = material_id;
 		this.used_quantity = used_quantity;
-		this.date_used = date_used;
+		this.date_used = LocalDate.parse(date_used);
 	}
 
+   public SiteMaterials(Sites site_id, Materials material_id, int used_quantity, String date_used) {
+		
+		this.site_id = site_id;
+		this.material_id = material_id;
+		this.used_quantity = used_quantity;
+		this.date_used = LocalDate.parse(date_used);
+	}
+	
 	public int getId() {
 		return id;
 	}

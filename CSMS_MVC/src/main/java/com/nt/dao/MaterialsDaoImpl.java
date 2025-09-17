@@ -66,6 +66,21 @@ public class MaterialsDaoImpl implements MaterialsDao{
 	     	return false;
 		}
 	}
+
+	@Override
+	public Materials getMaterial(int material_id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Materials material = session.get(Materials.class, material_id);
+
+		if(material!=null) {
+			   return material;
+		}else {
+		     	return null;
+			}
+		
+	}
 	
 	
 	
