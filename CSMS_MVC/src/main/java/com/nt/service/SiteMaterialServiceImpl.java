@@ -33,6 +33,13 @@ public class SiteMaterialServiceImpl implements SiteMaterialService{
 		
 		return siteMaterialDao.addSiteMaterial(s);
 	}
+
+	@Override
+	@Transactional
+	public SiteMaterials getSiteMaterial() {
+		
+		return siteMaterialDao.getSiteMaterial();
+	}
 	
 
 	

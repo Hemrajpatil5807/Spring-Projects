@@ -23,8 +23,7 @@
 
 			<!-- Main Content -->
 			<div class="col-md-10 mt-4">
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
 					<h4> Welcome, <c:out value="${sessionScope.username}" /> 👷 </h4>
 					<h2> <a class="navbar-brand" href="admindash">🏗️ Matoshree Construction.</a> </h2>
 				</div>
@@ -104,9 +103,10 @@
 												<i class="fa fa-chart-line"></i> Materials
 											</button>
 										    <!-- Manage Expenses --> 
-										    <a href="${pageContext.request.contextPath}/manager/expenses/${site.site_id}"
-											class="btn btn-sm btn-success"> <i
-												class="fa fa-money-bill"></i> Expenses
+										     <button class="btn btn-sm btn-success" data-bs-toggle="modal"
+												data-bs-target="#addExpenseModal${site.site_id}">
+												<i class="fa fa-chart-line"></i> Expenses
+											</button>
 										</a>
 										</td>
 									</tr>
@@ -180,6 +180,44 @@
 											</div>
 										</div>
 									</div>
+									
+									<!-- Add Expense Modal -->
+									<div class="modal fade" id="addExpenseModal${site.site_id}"
+										tabindex="-1" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<form action="addSiteExpense" method="post">
+													<div class="modal-header">
+														<h5 class="modal-title">Add Expense for ${site.site_name}</h5>
+														<button type="button" class="btn-close"
+															data-bs-dismiss="modal"></button>
+													</div>
+													<div class="modal-body">
+														<input type="hidden" name="site_id" value="${site.site_id}">
+													    <input type="hidden" name="user_id" value="${site.manager_id.id}">
+														<div class="mb-3">
+															<label class="form-label">Expense Decription</label> 
+															<input type="text" name="expense_type">
+														</div>
+														<div class="mb-3">
+															<label class="form-label">Amount</label> 
+															<input type="number" name="amount">
+														</div>
+														<div class="mb-3">
+															<label class="form-label">Date </label> 
+															<input type="date" name="date">
+														</div>
+													</div>
+													<div class="modal-footer">
+														<button type="submit" class="btn btn-success">Update</button>
+														<button type="button" class="btn btn-secondary"
+															data-bs-dismiss="modal">Cancel</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									
 
 								</c:forEach>
 							</tbody>

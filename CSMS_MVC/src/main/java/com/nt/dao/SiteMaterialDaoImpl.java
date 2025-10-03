@@ -22,6 +22,14 @@ public class SiteMaterialDaoImpl implements SiteMaterialDao{
 		
 		return true;
 	}
+
+	@Override
+	public SiteMaterials getSiteMaterial() {
+		
+		Session session = sessionFactory.getCurrentSession();
+		SiteMaterials sm = session.get(SiteMaterials.class, 1); // Change this Code
+		return null;
+	}
 	
 	
 }

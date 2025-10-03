@@ -39,6 +39,13 @@ public class ExpenseServiceImpl implements ExpenseService{
 		
 		return expenseDao.getExpenses();
 	}
+
+	@Override
+	@Transactional
+	public List<Expenses> getSiteExpenses(int siteId) {
+	
+		return expenseDao.getSiteExpenses(siteId);
+	}
 	
 	
 	

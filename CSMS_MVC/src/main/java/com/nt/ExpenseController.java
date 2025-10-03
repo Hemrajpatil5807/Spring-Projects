@@ -2,6 +2,8 @@ package com.nt;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,15 +33,15 @@ public class ExpenseController {
 		
 	}
 	
-//	@PostMapping("/addexpense")
-//	public ModelAndView addExpense(@ModelAttribute ExpensesDto expense) {
-//		
-//		System.out.println(material);
-//		expenseService.addExpense(expense);
-//		
-//		return manageExpenses();
-//		
-//	}
+	@PostMapping("/addSiteExpense")
+	public String addExpense(@ModelAttribute ExpensesDto expense , HttpSession session) {
+		
+		session.setAttribute("userId", expense.getUser_id());
+		expenseService.addExpense(expense);
+		
+		return "forward:/managerdash"; 
+		
+	}
 	
 	@RequestMapping("/manageexpenses")
 	public ModelAndView manageExpenses() {

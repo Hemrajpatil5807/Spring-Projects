@@ -13,6 +13,8 @@ private int expense_id;
 	
 	private String date;
 	
+	private int user_id;
+	
 	public ExpensesDto() {
 		
 	}
@@ -64,6 +66,15 @@ private int expense_id;
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+	
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
 	@Override

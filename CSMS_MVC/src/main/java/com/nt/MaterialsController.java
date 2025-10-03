@@ -50,6 +50,15 @@ public class MaterialsController {
 	    return  new ModelAndView("admin/materials/material", "materials", materials); 	
 	}
 	
+	@RequestMapping("/materials")
+	public ModelAndView Materials() {
+		
+		 List<Materials> materials = materialsService.getMaterials();
+		
+	    return  new ModelAndView("manager/managematerial", "materials", materials); 	
+	}
+	
+	
 	@PostMapping("/updatematerial")
 	public String updateMaterial(@ModelAttribute("bean") Materials material , Model model) {
 		

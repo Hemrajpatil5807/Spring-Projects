@@ -67,6 +67,8 @@ public class UsersController {
 		 // Code Change To Site Manager Login
 		}else if(user!=null && user.getRole().equals("SITE_MANAGER")){
 			session.setAttribute("username", user.getName());
+			session.setAttribute("userId", user.getId());
+
 			model.addAttribute("message" , "Login Succefully !");
 			
 			List<Sites> sites = sitesService.getManagerSites(user.getId());

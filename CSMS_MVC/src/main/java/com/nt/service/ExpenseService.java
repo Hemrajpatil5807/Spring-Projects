@@ -14,6 +14,6 @@ public interface ExpenseService {
 
 	List<Expenses> getExpenses();
 	
-	
+	List<Expenses> getSiteExpenses(int sideId);
 
 }

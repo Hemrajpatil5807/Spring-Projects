@@ -13,6 +13,8 @@ public interface ExpenseDao {
 
 	List<Expenses> getExpenses();
 
+	List<Expenses> getSiteExpenses(int siteId);
+
 	
 	
 }

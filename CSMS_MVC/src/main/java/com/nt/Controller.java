@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.nt.entity.Expenses;
 import com.nt.entity.Sites;
+import com.nt.service.ExpenseService;
 import com.nt.service.SitesService;
 
 @org.springframework.stereotype.Controller
@@ -17,6 +20,9 @@ public class Controller {
 	
 	@Autowired
 	SitesService sitesService;
+	
+	@Autowired
+	ExpenseService expenseService;
 	
 	@GetMapping("/")
 	public String indexPage() {
@@ -58,17 +64,38 @@ public class Controller {
 //		return "admin/sites/site";
 //	}
 	
-//	@GetMapping("/manageexpenses")
-//	public String expensePage() {
-//		return "admin/expenses/expense";
-//	}
+	@GetMapping("/siteexpenses")
+	public String expensePage(HttpSession session, Model model) {
+		int userId = (int) session.getAttribute("userId");
+		List<Sites> sites = sitesService.getManagerSites(userId);
+		model.addAttribute("sites",sites);
+		return "manager/manageexpense";
+	}
 	
 	@RequestMapping("/managerdash")
 	public String managerdashPage( HttpSession session, Model model) {
 		int userId = (int) session.getAttribute("userId");
 		List<Sites> sites = sitesService.getManagerSites(userId);
 		model.addAttribute("sites",sites);
-		return "manager/managerdash";
+		return "forward:/manager/managerdash";
 	}
+	
+	
+	@GetMapping("/manageexpense")
+	public String expensePage(@RequestParam int siteId,  HttpSession session, Model model) {
+		int userId = (int) session.getAttribute("userId");
+		List<Sites> sites = sitesService.getManagerSites(userId);
+		model.addAttribute("sites",sites);
+		
+		   if (siteId != 0) {
+		        List<Expenses> expenses = expenseService.getSiteExpenses(siteId);
+		        model.addAttribute("expenses", expenses);
+		        model.addAttribute("selectedSiteId", siteId);
+		        model.addAttribute("selectedSiteName", sitesService.getSite(siteId).getSite_name());
+		    }
+		   
+		return "manager/manageexpense";
+	}
+	
 	
 }

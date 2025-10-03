@@ -11,6 +11,8 @@ public interface SiteMaterialService {
 
 	
 	boolean addSiteMaterial(SiteMaterialDto sm);
+
+	SiteMaterials getSiteMaterial();
 	
 	
 
